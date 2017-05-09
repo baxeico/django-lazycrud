@@ -12,7 +12,7 @@ Dependencies:
 -------------
 
 The app depends on `django-crispy-forms <http://django-crispy-forms.readthedocs.io/en/latest/>`_ to generate forms and includes a static version of
-`Datatables <https://datatables.net/>` and `Bootstrap Datepicker <https://bootstrap-datepicker.readthedocs.io/en/latest/>` to provide
+`Datatables <https://datatables.net/>`_ and `Bootstrap Datepicker <https://bootstrap-datepicker.readthedocs.io/en/latest/>`_ to provide
 client side enhancements to tables and forms.
 
 Install:
