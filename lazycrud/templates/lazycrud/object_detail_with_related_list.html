@@ -30,6 +30,9 @@
                 {% for name in view.related_list_fields %}
                     <th>{{ view.model|fieldlabel:name }}</th>
                 {% endfor %}
+                {% if view.related_list_actions %}
+                    <th></th>
+                {% endif %}
                 </tr>
             </thead>
             <tbody>
@@ -51,6 +54,13 @@
                     {% for name in view.related_list_fields %}
                         <td>{{ o|fieldvalue:name }}</td>
                     {% endfor %}
+                    {% if view.related_list_actions %}
+                        <td class="actions">
+                        {% for action in view.related_list_actions %}
+                            <a class="btn btn-link" href="{% url action.url pk=o.pk %}">{% if action.icon %}<i class="fa fa-{{ action.icon }}"></i> {% endif %}{{ action.label }}</a>
+                        {% endfor %}
+                        </td>
+                    {% endif %}
                     </tr>
                 {% endfor %}
             </tbody>
