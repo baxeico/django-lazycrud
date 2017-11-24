@@ -5,14 +5,15 @@
 {% load i18n %}
 
 {% block js %}
-<script src="{% static 'lazycrud/js/bootstrap-datepicker/bootstrap-datepicker.js' %}"></script>
-<script src="{% static 'lazycrud/js/bootstrap-datepicker/bootstrap-datepicker.it.js' %}" charset="UTF-8"></script>
+<script src="{% static 'lazycrud/js/moment/moment.js' %}"></script>
+<script src="{% static 'lazycrud/js/moment/it.js' %}"></script>
+<script src="{% static 'lazycrud/js/bootstrap-datetimepicker/datetimepicker.min.js' %}"></script>
 <script src="{% static 'lazycrud/js/object_form.js' %}"></script>
 {{ form.media.js }}
 {% endblock %}
 
 {% block css %}
-<link href="{% static 'lazycrud/css/datepicker3.css' %}" rel="stylesheet">
+<link href="{% static 'lazycrud/css/datetimepicker.min.css' %}" rel="stylesheet">
 {{ form.media.css }}
 {% endblock %}
 

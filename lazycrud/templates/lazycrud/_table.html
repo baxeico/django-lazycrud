@@ -1,6 +1,6 @@
 {% load lazycrud %}
 
-<table class="table table-striped table-hover table-datatables"
+<table class="table {% if table_classes %}{{ table_classes }}{% else %}table-striped table-hover table-datatables{% endif %}"
     {% if datatables_options %} data-datatables-options="{{ datatables_options }}"{% endif %}>
     <thead>
         <tr>
