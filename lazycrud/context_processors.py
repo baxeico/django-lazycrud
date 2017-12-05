@@ -10,3 +10,11 @@ def form_horizontal_helper(request):
     return {
         'form_horizontal_helper': helper
     }
+
+def table_inline_formset(request):
+    helper = FormHelper()
+    helper.form_tag = False
+    helper.template = 'lazycrud/table_inline_formset.html'
+    return {
+        'table_inline_formset': helper
+    }

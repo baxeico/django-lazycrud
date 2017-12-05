@@ -73,6 +73,7 @@
 
 <div class="row">
     <div class="col-md-12">
+    {% block form_content %}
         <form class="form-horizontal" role="form" method="POST" action="" {% if form.is_multipart %}enctype="multipart/form-data"{% endif %}>
         {% if form.helper %}
             {% crispy form %}
@@ -85,6 +86,7 @@
                 </div>
             </div>
         </form>
+    {% endblock %}
     </div> <!-- /.col-lg-12 -->
 </div> <!-- /.row -->
 
