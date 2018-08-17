@@ -82,7 +82,7 @@
         {% endif %}
             <div class="form-actions">
                 <div class="col-lg-8 col-lg-offset-4">
-                    <input type="submit" name="submit" value="Salva" class="btn btn-primary" id="submit-save">
+                    <input type="submit" name="submit" value="{{ view.submit_text|default:'Salva' }}" class="btn btn-primary" id="submit-save">
                 </div>
             </div>
         </form>
