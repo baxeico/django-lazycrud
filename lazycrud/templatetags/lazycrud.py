@@ -6,6 +6,7 @@ import logging
 from django import template
 from django.utils.safestring import mark_safe
 from django.utils.html import conditional_escape
+from django.template.defaultfilters import linebreaksbr
 
 from ..utils import fieldlabel as ufieldlabel, fieldvalue as ufieldvalue
 
@@ -35,7 +36,7 @@ def _get_label_value(obj, key, autoescape):
     if hasattr(value, 'get_absolute_url') and not hasattr(value, 'lazycrud_nofollow'):
         value = '<a href="{}">{}</a>'.format(value.get_absolute_url(), esc(value))
     else:
-        value = esc(value)
+        value = linebreaksbr(esc(value))
     return label, value
 
 @register.filter(needs_autoescape=True)

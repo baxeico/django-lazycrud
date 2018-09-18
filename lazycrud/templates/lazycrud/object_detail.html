@@ -37,16 +37,7 @@
     <div class="col-md-6">
         <dl class="dl-horizontal">
         {% for name in view.fields %}
-            <dt>{{ object|fieldlabel:name }}</dt>
-            {% with object|fieldvalue:name as value %}
-                <dd>
-                {% if value.get_absolute_url %}
-                    <a href="{{ value.get_absolute_url }}">{{ value }}</a>
-                {% else %}
-                    {{ value|linebreaksbr|default_if_none:'' }}
-                {% endif %}
-                </dd>
-            {% endwith %}
+            {{ object|dl_item:name }}
         {% endfor %}
         </dl>
     </div>
