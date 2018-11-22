@@ -21,7 +21,11 @@
 {% if view.create_url %}
 <div class="row">
     <div class="col-md-12">
-        <a class="btn btn-success pull-right" role="button" href="{{ view.create_url }}"><i class="fa fa-plus"></i> {{ view.create_label }}</a>
+        <p class="pull-right">
+        {% block buttons %}
+            <a class="btn btn-success" role="button" href="{{ view.create_url }}"><i class="fa fa-plus"></i> {{ view.create_label }}</a>
+        {% endblock %}
+        </p>
     </div>
 </div>
 <hr>
