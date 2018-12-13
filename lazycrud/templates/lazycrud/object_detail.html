@@ -16,7 +16,7 @@
 </div>
 <div class="row">
     <div class="col-lg-12">
-        <p class="pull-right">
+        <div class="pull-right">
     {% block buttons %}
         {% if view.list_url %}
             <a class="btn btn-primary" role="button" href="{{ view.list_url }}"><i class="fa fa-angle-left"></i> {% trans 'Torna alla lista' %}</a>
@@ -28,7 +28,7 @@
             <a class="btn btn-danger" role="button" href="{% url view.delete_url pk=object.pk %}"><i class="fa fa-times"></i> {% trans 'Elimina' %}</a>
         {% endif %}
     {% endblock %}
-        </p>
+        </div>
     </div>
 </div>
 <hr>
