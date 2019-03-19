@@ -11,7 +11,7 @@
 {% endblock %}
 
 {% block right_col %}
-    <div class="col-md-6">
+    <div class="{{ view.right_col_class|default='col-md-6' }}">
     {% if view.related_list_title %}
         <h3>{{ view.related_list_title }}</h3>
     {% endif %}
