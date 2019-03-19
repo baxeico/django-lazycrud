@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name = 'django-lazycrud',
-    version = '1.4.8',
+    version = '1.4.9',
     packages = find_packages(),
     author = 'Augusto Destrero',
     author_email = 'a.destrero@gmail.com',
