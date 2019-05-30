@@ -1,9 +1,15 @@
 $(function() {
-    $.extend(true, $.fn.dataTable.defaults, {
-        oLanguage: {
-            sUrl: $('body').data('staticurl') + 'lazycrud/js/dataTables/lang-ita.js'
-        }
-    });
+    var object_list_js_url = $('#object-list-script').attr('src');
+    var object_list_js_dir = object_list_js_url.substr(0, object_list_js_url.lastIndexOf("/"))
+
+    var lang = $('html').attr('lang');
+    if (lang != 'en') {
+        $.extend(true, $.fn.dataTable.defaults, {
+            oLanguage: {
+                sUrl: object_list_js_dir + '/dataTables/i18n/' + lang + '.js'
+            }
+        });
+    }
 
     $.fn.dataTable.moment('DD/MM/YYYY');
     $.fn.dataTable.moment('DD/MM/YYYY HH:mm');
