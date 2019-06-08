@@ -3,6 +3,7 @@ from datetime import datetime, date
 
 from django.utils import formats
 from django.utils.timezone import localtime
+from django.conf import settings
 
 def formatDate(dt):
     if dt is None:
@@ -12,7 +13,9 @@ def formatDate(dt):
 def formatDateTime(dt):
     if dt is None:
         return 'n.d.'
-    return formats.date_format(localtime(dt), "SHORT_DATETIME_FORMAT")
+    if settings.USE_TZ:
+        dt = localtime(dt)
+    return formats.date_format(dt, "SHORT_DATETIME_FORMAT")
 
 def fieldlabel(obj, key):
     try:
