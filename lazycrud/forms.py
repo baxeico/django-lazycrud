@@ -1,7 +1,10 @@
 from itertools import groupby
+
 from django.forms.models import (
     ModelChoiceIterator, ModelChoiceField, ModelMultipleChoiceField
 )
+
+from crispy_forms.helper import FormHelper
 
 class Grouped(object):
     def __init__(self, queryset, group_by_field,
@@ -46,3 +49,18 @@ class GroupedModelChoiceField(Grouped, ModelChoiceField):
 
 class GroupedModelMultiChoiceField(Grouped, ModelMultipleChoiceField):
     choices = property(Grouped._get_choices, ModelMultipleChoiceField._set_choices)
+
+def get_form_horizontal_helper():
+    helper = FormHelper()
+    helper.form_tag = False
+    helper.form_class = 'form-horizontal'
+    helper.label_class = 'col-lg-4'
+    helper.field_class = 'col-lg-8'
+    helper.include_media = False
+    return helper
+
+def get_table_inline_formset_helper():
+    helper = FormHelper()
+    helper.form_tag = False
+    helper.template = 'lazycrud/table_inline_formset.html'
+    return helper

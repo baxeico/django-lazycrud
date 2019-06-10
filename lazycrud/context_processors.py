@@ -1,20 +1,13 @@
 from crispy_forms.helper import FormHelper
 
+from .forms import get_form_horizontal_helper, get_table_inline_formset_helper
+
 def form_horizontal_helper(request):
-    helper = FormHelper()
-    helper.form_tag = False
-    helper.form_class = 'form-horizontal'
-    helper.label_class = 'col-lg-4'
-    helper.field_class = 'col-lg-8'
-    helper.include_media = False
     return {
-        'form_horizontal_helper': helper
+        'form_horizontal_helper': get_form_horizontal_helper()
     }
 
 def table_inline_formset(request):
-    helper = FormHelper()
-    helper.form_tag = False
-    helper.template = 'lazycrud/table_inline_formset.html'
     return {
-        'table_inline_formset': helper
+        'table_inline_formset': get_table_inline_formset_helper()
     }
