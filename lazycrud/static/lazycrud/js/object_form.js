@@ -1,4 +1,4 @@
-$(function() {
+function lazycrud_form_init(form_id) {
     var datetimepicker_icons = {
         time: "fa fa-clock-o",
         date: "fa fa-calendar",
@@ -9,21 +9,25 @@ $(function() {
         close: "fa fa-times",
     };
 
-    $('.dateinput').datetimepicker({
+    $(form_id + ' .dateinput').datetimepicker({
         format: 'DD/MM/YYYY',
         icons: datetimepicker_icons,
     });
 
-    $('.timeinput').datetimepicker({
+    $(form_id + ' .timeinput').datetimepicker({
         format: 'HH:mm',
         icons: datetimepicker_icons,
         stepping: 15,
     });
 
-    $('.datetimeinput').datetimepicker({
+    $(form_id + ' .datetimeinput').datetimepicker({
         locale: 'it',
         icons: datetimepicker_icons,
         stepping: 15,
         showClose: true,
     });
+}
+
+$(function() {
+    lazycrud_form_init('form');
 });
