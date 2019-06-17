@@ -19,12 +19,16 @@ def formatDateTime(dt):
 
 def fieldlabel(obj, key):
     try:
-        return obj._meta.get_field(key).verbose_name.strip().capitalize() # strip serve per forzare l'esecuzione di ugettext_lazy
+        return obj._meta.get_field(key).verbose_name.strip() # strip serve per forzare l'esecuzione di ugettext_lazy
     except:
-        try:
-            return getattr(obj, '%s_label' % key)()
-        except:
-            return key.capitalize().replace('_', ' ')
+        model = type(obj)
+        attr = getattr(model, key, None)
+        if attr and hasattr(attr, "short_description"):
+            return attr.short_description
+        attr = getattr(obj, '%s_label' % key, None)
+        if callable(attr):
+            return attr()
+        return key.capitalize().replace('_', ' ')
 
 def fieldvalue(obj, key):
     try:
