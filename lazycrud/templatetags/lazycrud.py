@@ -54,3 +54,9 @@ def list_item(obj, key, autoescape=None):
     label, value = _get_label_value(obj, key, autoescape)
     result = u'<li><strong>{}:</strong> {}</li>'.format(label, value)
     return mark_safe(result)
+
+@register.filter(needs_autoescape=True)
+def tr_item(obj, key, autoescape=None):
+    label, value = _get_label_value(obj, key, autoescape)
+    result = u'<tr><td class="lazycrud-label">{}</td><td class="lazycrud-value">{}</td></tr>'.format(label, value)
+    return mark_safe(result)
