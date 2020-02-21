@@ -32,15 +32,15 @@
         <div class="col-md-12">
         {% if view.back_url %}
             <a class="btn btn-primary pull-right" role="button" href="{{ view.back_url }}">
-                <i class="fa fa-angle-left"></i> Torna indietro
+                <i class="fa fa-angle-left"></i> {% trans 'Torna indietro' %}
             </a>
         {% elif form.instance.pk %}
             <a class="btn btn-primary pull-right" role="button" href="{{ form.instance.get_absolute_url }}">
-                <i class="fa fa-angle-left"></i> Torna a {{ form.instance }}
+                <i class="fa fa-angle-left"></i> {% trans 'Torna a' %} {{ form.instance }}
             </a>
         {% else %}
             <a class="btn btn-primary pull-right" role="button" href="javascript:history.back();">
-                <i class="fa fa-angle-left"></i> Torna indietro
+                <i class="fa fa-angle-left"></i> {% trans 'Torna indietro' %}
             </a>
         {% endif %}
         </div>
