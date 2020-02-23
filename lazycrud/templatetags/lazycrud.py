@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 
 import logging
 
+from django.utils.translation import ugettext_lazy as _
 from django import template
 from django.utils.safestring import mark_safe
 from django.utils.html import conditional_escape
@@ -45,7 +46,7 @@ def dl_item(obj, key, autoescape=None):
         label, value = _get_label_value(obj, key, autoescape)
         result = '<dt>{}</dt><dd>{}</dd>'.format(label, value)
     except:
-        logger.exception('Errore nel rendering del campo %s' % key)
+        logger.exception(_('Error rendering the field %s') % key)
         result = '<dt></dt><dd></dd>'
     return mark_safe(result)
 

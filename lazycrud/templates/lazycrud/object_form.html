@@ -32,15 +32,15 @@
         <div class="col-md-12">
         {% if view.back_url %}
             <a class="btn btn-primary pull-right" role="button" href="{{ view.back_url }}">
-                <i class="fa fa-angle-left"></i> {% trans 'Torna indietro' %}
+                <i class="fa fa-angle-left"></i> {% trans 'Back' %}
             </a>
         {% elif form.instance.pk %}
             <a class="btn btn-primary pull-right" role="button" href="{{ form.instance.get_absolute_url }}">
-                <i class="fa fa-angle-left"></i> {% trans 'Torna a' %} {{ form.instance }}
+                <i class="fa fa-angle-left"></i> {% trans 'Back to' %} {{ form.instance }}
             </a>
         {% else %}
             <a class="btn btn-primary pull-right" role="button" href="javascript:history.back();">
-                <i class="fa fa-angle-left"></i> {% trans 'Torna indietro' %}
+                <i class="fa fa-angle-left"></i> {% trans 'Back' %}
             </a>
         {% endif %}
         </div>
@@ -58,7 +58,7 @@
         {% if form.errors %}
             <div class="alert alert-danger alert-dismissable">
                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                {% trans 'Il form contiene errori, controlla i campi indicati in rosso' %}
+                {% trans 'There is some error in the form, check the red fields' %}
                 <ul>
                 {% for error_key, error_value in form.errors.items %}
                     {% if error_key != '__all__' %}
@@ -82,7 +82,7 @@
         {% endif %}
             <div class="form-actions">
                 <div class="col-lg-8 col-lg-offset-4">
-                    <input type="submit" name="submit" value="{{ view.submit_text|default:'Salva' }}" class="btn btn-primary" id="submit-save">
+                    <input type="submit" name="submit" value="{{ view.submit_text|default:_('Save') }}" class="btn btn-primary" id="submit-save">
                 </div>
             </div>
         </form>

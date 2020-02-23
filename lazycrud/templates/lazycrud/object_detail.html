@@ -19,13 +19,13 @@
         <div class="pull-right">
     {% block buttons %}
         {% if view.list_url %}
-            <a class="btn btn-primary" role="button" href="{{ view.list_url }}"><i class="fa fa-angle-left"></i> {% trans 'Torna alla lista' %}</a>
+            <a class="btn btn-primary" role="button" href="{{ view.list_url }}"><i class="fa fa-angle-left"></i> {% trans 'Back to list' %}</a>
         {% endif %}
         {% if view.update_url %}
-            <a class="btn btn-warning" role="button" href="{% url view.update_url pk=object.pk %}"><i class="fa fa-edit"></i> {% trans 'Modifica' %}</a>
+            <a class="btn btn-warning" role="button" href="{% url view.update_url pk=object.pk %}"><i class="fa fa-edit"></i> {% trans 'Edit' %}</a>
         {% endif %}
         {% if view.delete_url %}
-            <a class="btn btn-danger" role="button" href="{% url view.delete_url pk=object.pk %}"><i class="fa fa-times"></i> {% trans 'Elimina' %}</a>
+            <a class="btn btn-danger" role="button" href="{% url view.delete_url pk=object.pk %}"><i class="fa fa-times"></i> {% trans 'Delete' %}</a>
         {% endif %}
     {% endblock %}
         </div>
