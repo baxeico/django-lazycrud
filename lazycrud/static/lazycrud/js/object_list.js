@@ -11,8 +11,10 @@ $(function() {
         });
     }
 
-    $.fn.dataTable.moment('DD/MM/YYYY');
-    $.fn.dataTable.moment('DD/MM/YYYY HH:mm');
+    moment.locale(lang)
+
+    $.fn.dataTable.moment(moment.localeData().longDateFormat('L'));
+    $.fn.dataTable.moment(moment.localeData().longDateFormat('L') + ' ' + moment.localeData().longDateFormat('LT'));
 
     $('body').off('mousedown contextmenu', '.clickable_row');
     $('body').on('mousedown', '.clickable_row', function(e) {
