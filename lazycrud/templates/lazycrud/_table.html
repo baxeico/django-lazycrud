@@ -8,7 +8,7 @@
         {% for name in object_fields %}
             <th>{{ object_model|fieldlabel:name }}</th>
         {% endfor %}
-        {% if object_actions %}
+        {% if object_actions is not None %}
             <th></th>
         {% endif %}
         </tr>
@@ -30,14 +30,11 @@
             {% for name in object_fields %}
                 <td>{{ o|fieldvalue:name }}</td>
             {% endfor %}
-            {% if object_actions %}
+            {% if object_actions is not None %}
                 <td class="actions">
                 {% for action in object_actions %}
                     <a class="btn btn-link" href="{% url action.url pk=o.pk %}">{% if action.icon %}<i class="fa fa-{{ action.icon }}"></i> {% endif %}{{ action.label }}</a>
                 {% endfor %}
-                </td>
-            {% elif o.get_update_url or o.get_delete_url %}
-                <td class="actions">
                 {% if o.get_update_url %}
                     <a class="btn btn-link" href="{{ o.get_update_url }}"><i class="fa fa-edit"></i> {% trans "Edit" %}</a>
                 {% endif %}
