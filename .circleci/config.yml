@@ -1,15 +1,17 @@
 version: 2.1
+orbs:
+  python: circleci/python@2.0.3
 jobs:
   pypi_publish:
-    docker:
-      - image: circleci/python:3.6.4
+    executor: python/default
     steps:
-      - checkout  # checkout source code to working directory
+      - checkout
+      - python/install-packages:
+          args: twine
+          pkg-manager: pipenv
       - run:
           command: |  # create whl, install twine and publish to PyPI
             python setup.py sdist bdist_wheel
-            sudo pip install pipenv
-            pipenv install twine
             pipenv run twine upload dist/*
 workflows:
   main:
