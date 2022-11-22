@@ -5,8 +5,7 @@
 {% load i18n %}
 
 {% block js %}
-<script src="{% static 'lazycrud/js/moment/moment.js' %}"></script>
-<script src="{% static 'lazycrud/js/moment/it.js' %}"></script>
+<script src="{% static 'lazycrud/js/moment/moment-with-locales.min.js' %}"></script>
 <script src="{% static 'lazycrud/js/bootstrap-datetimepicker/datetimepicker.min.js' %}"></script>
 <script src="{% static 'lazycrud/js/object_form.js' %}"></script>
 {{ form.media.js }}
