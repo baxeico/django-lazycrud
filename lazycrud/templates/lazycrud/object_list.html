@@ -35,7 +35,7 @@
 
 <div class="row">
     <div class="col-md-12">
-        {% include "lazycrud/_table.html" with table_classes=view.table_classes object_model=view.model object_fields=view.fields object_list=object_list datatables_options=view.datatables_options object_url=view.detail_url object_url_target=view.detail_url_target object_actions=view.list_actions %}
+        {% include "lazycrud/_table.html" with table_classes=view.table_classes show_table_footer=view.show_table_footer object_model=view.model object_fields=view.fields object_list=object_list datatables_options=view.datatables_options object_url=view.detail_url object_url_target=view.detail_url_target object_actions=view.list_actions %}
     </div>
 </div>
 
