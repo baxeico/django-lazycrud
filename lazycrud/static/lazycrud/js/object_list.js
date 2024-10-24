@@ -11,7 +11,7 @@ $(function() {
         });
     }
 
-    moment.locale(lang)
+    moment.locale(lang);
 
     $.fn.dataTable.moment(moment.localeData().longDateFormat('L'));
     $.fn.dataTable.moment(moment.localeData().longDateFormat('L') + ' ' + moment.localeData().longDateFormat('LT'));
