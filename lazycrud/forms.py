@@ -45,10 +45,22 @@ class GroupedModelChoiceIterator(ModelChoiceIterator):
                 )
 
 class GroupedModelChoiceField(Grouped, ModelChoiceField):
-    choices = property(Grouped._get_choices, ModelChoiceField._set_choices)
+    @property
+    def choices(self):
+        return Grouped._get_choices(self)
+
+    @choices.setter
+    def choices(self, value):
+        ModelChoiceField._set_choices(self, value)
 
 class GroupedModelMultiChoiceField(Grouped, ModelMultipleChoiceField):
-    choices = property(Grouped._get_choices, ModelMultipleChoiceField._set_choices)
+    @property
+    def choices(self):
+        return Grouped._get_choices(self)
+
+    @choices.setter
+    def choices(self, value):
+        ModelMultipleChoiceField._set_choices(self, value)
 
 def get_form_horizontal_helper():
     helper = FormHelper()
