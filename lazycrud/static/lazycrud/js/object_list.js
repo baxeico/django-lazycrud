@@ -18,6 +18,11 @@ $(function() {
 
     $('body').off('mousedown contextmenu', '.clickable_row');
     $('body').on('mousedown', '.clickable_row', function(e) {
+        // Se il click è su un tag <a> (o un suo figlio),
+        // lascia il comportamento nativo del link.
+        if ($(e.target).closest('a').length) {
+            return;
+        }
         var url = $(this).data('url');
         if ($(this).data('target') == '_blank' || e.button == 2) {
             // data-target="_blank" o click con tasto destro: nuova finestra
