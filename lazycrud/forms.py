@@ -6,7 +6,23 @@ from django.forms.models import (
 
 from crispy_forms.helper import FormHelper
 
+
+class GroupedModelChoiceIterator(ModelChoiceIterator):
+
+    def __iter__(self):
+        if self.field.empty_label is not None:
+            yield ("", self.field.empty_label)
+        queryset = self.queryset.all()
+        for group, choices in groupby(queryset, key=lambda row: getattr(row, self.field.group_by_field)):
+            if self.field.group_label(group):
+                yield (
+                    self.field.group_label(group),
+                    [self.choice(ch) for ch in choices]
+                )
+
+
 class Grouped(object):
+
     def __init__(self, queryset, group_by_field,
                  group_label=None, value_label=None, *args, **kwargs):
         """
@@ -29,26 +45,17 @@ class Grouped(object):
             return self._choices
         return GroupedModelChoiceIterator(self)
 
-class GroupedModelChoiceIterator(ModelChoiceIterator):
-    def __iter__(self):
-        if self.field.empty_label is not None:
-            yield ("", self.field.empty_label)
-        queryset = self.queryset.all()
-        if not queryset._prefetch_related_lookups:
-            queryset = queryset.iterator()
-        for group, choices in groupby(self.queryset.all(),
-                    key=lambda row: getattr(row, self.field.group_by_field)):
-            if self.field.group_label(group):
-                yield (
-                    self.field.group_label(group),
-                    [self.choice(ch) for ch in choices]
-                )
+    def _set_choices(self, value):
+        self._choices = self.widget.choices = value
+
 
 class GroupedModelChoiceField(Grouped, ModelChoiceField):
-    choices = property(Grouped._get_choices, ModelChoiceField._set_choices)
+    choices = property(Grouped._get_choices, Grouped._set_choices)
+
 
 class GroupedModelMultiChoiceField(Grouped, ModelMultipleChoiceField):
-    choices = property(Grouped._get_choices, ModelMultipleChoiceField._set_choices)
+    choices = property(Grouped._get_choices, Grouped._set_choices)
+
 
 def get_form_horizontal_helper():
     helper = FormHelper()
