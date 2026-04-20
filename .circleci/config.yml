@@ -8,13 +8,9 @@ jobs:
       tag: '3.14'
     steps:
       - checkout
-      - python/install-packages:
-          args: twine build
-          pkg-manager: pipenv
-      - run:
-          command: |  # create whl and publish to PyPI
-            python -m build
-            pipenv run twine upload dist/*
+      - python/dist:
+          build-tool: build
+      - run: pip install twine && twine upload dist/*
 workflows:
   main:
     jobs:
