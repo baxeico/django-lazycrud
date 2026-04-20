@@ -1,9 +1,11 @@
 version: 2.1
 orbs:
-  python: circleci/python@2.0.3
+  python: circleci/python@4.0.0
 jobs:
   pypi_publish:
-    executor: python/default
+    executor:
+      name: python/default
+      tag: '3.14'
     steps:
       - checkout
       - python/install-packages:
